@@ -2,7 +2,7 @@ class Solution:
     def triangle(self, numRows):
         result = []
         for i in range(numRows):
-            row = [1] * (i + 1)
+            row = [1] * (i + 1) # initialize row with 1s
             for j in range(1, i): # first and last element is always 1
                 row[j] = result[i-1][j] + result[i-1][j-1]
             result.append(row)

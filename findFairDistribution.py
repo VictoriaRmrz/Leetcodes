@@ -3,9 +3,8 @@ def findFairDistribution(points, values):
     result = []
     #values.sort()
     values = list(set(values)) 
-    aux = points.copy()
     #aux.sort()
-    aux = list(set(aux)) # eliminar duplicados
+    aux = list(set(points)) # eliminar duplicados
     for i in range(len(aux)):
         hash[aux[i]] = values[i]
 

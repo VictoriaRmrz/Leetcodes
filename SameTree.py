@@ -9,10 +9,10 @@ class Solution(object):
     # in theory this could work but given that we are working with tree structures
     # we need to check the null values of the tree  and their structure
     def isSameTree(self, p, q):
-        if not p and not q:
+        if not p and not q: # both are null
             return True
         
-        if not p or not q:
+        if not p or not q: # one is null
             return False
         
         if p.val == q.val:

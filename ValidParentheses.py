@@ -1,16 +1,16 @@
 class Solution(object):
     def isValid(self, s):
         stack = []
+        mapping = {
+                    ")": "(", 
+                    "}": "{", 
+                    "]": "["
+                }
         for char in s:
-            if char in "({[": 
+            if stack.pop() != mapping[char]:
+                return False
+            else:
                 stack.append(char)
-            elif char in ")}]":
-                if (char == ")" and stack[-1] != "(") or \
-                  (char == "}" and stack[-1] != "{") or \
-                  (char == "]" and stack[-1] != "["):
-                   return False
-
-                stack.pop()
         return not stack
 
 def main():

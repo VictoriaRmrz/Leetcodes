@@ -1,22 +1,26 @@
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
-        hash = {}
+        saved_chars = set()
         l = 0
         max_length = 0
+        if s == "":
+            return 0
+        
         for r in range(len(s)):
-            if s[r] in hash:
-                l = hash[s[r]] + 1
-            hash[s[r]] = r
+            while s[r] in saved_chars:
+                saved_chars.remove(s[l])
+                l += 1
+            saved_chars.add(s[r])
             max_length = max(max_length, r - l + 1)
         return max_length
-
+    
 
 def main():
     solution = Solution()
-    print(solution.anotherWay("abcabcbb"))  # Output: 3
-    print(solution.anotherWay("bbbbb"))     # Output: 1
-    print(solution.anotherWay("pwwkew"))    # Output: 3
-    print(solution.anotherWay(""))          # Output: 0
+    print(solution.lengthOfLongestSubstring("abcabcbb"))  # Output: 3
+    print(solution.lengthOfLongestSubstring("bbbbb"))     # Output: 1
+    print(solution.lengthOfLongestSubstring("pwwkew"))    # Output: 3
+    print(solution.lengthOfLongestSubstring(""))          # Output: 0
 
 if __name__ == "__main__":
     main()
